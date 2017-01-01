@@ -22,3 +22,7 @@ Racik OS-mu sendiri! - Buat sistem oprasimu sendiri hanya dalam beberapa klik sa
 
 ### Buat OS baru
 - masuk ke menu new task / localhost:8000/task/new
+
+## Bagimana ini berkerja ?
+
+#### Sistem antrian : [Detail Workflow](https://github.com/tealinuxos/tealinux-studio/blob/master/workflow.txth)
