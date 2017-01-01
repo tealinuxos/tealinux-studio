@@ -1,0 +1,157 @@
+User ---- make tasks ---> Tasks Table
+
+kita punya banyak row dari banyak user
+
+
+============    CASE SECTION 0      ====================
+
+// kondisi perumpaan yg mungkin
+
+------------------ Tasks Table -------------------------
+
+id | user_id | nama_os | nama_file_iso | .... | status
+
+1     1       dikyos      tealinux.d-os            0
+2     2       setyos      tealinux.s-os            0
+3     1       irfanos     tealinux.i-os            0
+
+NB : status = 0 : belum jadi | 1 : sudah jadi
+
+
+--------------- Builds Table -----------------------------
+
+id  | task_id | sudah_jadi | status_server
+
+mulanya kosong
+
+NB :  sudah_jadi = 0 : belum jadi | 1 : sudah jadi
+      server_status = 0 : idle (tidak sedang build) | 1 : lagi build
+
+
+/////////////// Crontab / Scheduling \\\\\\\\\\\\\\\\\\\
+
+Metode yg kita pake ini yg mungkin kurang tepat, soalnya aku baru taunya ini. Haha
+
+Jadi setiap menit akan menjalankan perintah dibawah ini.
+
+
+
+IF ((Tabel builds is Empty) OR ({sudah_jadi} = 1 di row terakhir tabel builds))
+{
+  $get_task_id = ambil {id} di tabel tasks yang pertama di urutkan berdasarkan {created_at} secara asc where {status} = 0 // maksudnya yg belum jadi
+  insert into builds ( task_id = $get_task_id,  sudah_jadi = 0, server_status = 0 ) // menambah task dalam list yg musti di build
+
+}
+
+IF (({sudah_jadi} = 0 di row terakhir tabel builds) AND ({server_status} = 0 di row terakhir tabel builds))
+{
+  $get_last_id_builds = select {id} dari row terakhir tabel build.
+
+  SQL : Update server_status = 1 where {id} = $get_last_id_builds // supaya tidak dapat mengeksekusi exec tiap menit.
+
+  $username = Aku gak paham kenapa disini paramaternya username, gimana kalo satu username punya banyak task ?? why not {id}  itu sendiri.
+
+  exec("sudo /usr/res/scripts/run_as_user.sh $username > /dev/null 2>/dev/null &");
+
+  \\\\\\ di dalam bashnya kalo udah rampung musti :
+
+          Update di tabel builds : sudah_jadi = 1 && server_status = 0 where task_id = id task yang kamu baru eksekusi. // untuk membuat server kembali dapat digunakan dan mengetahui bahwa semua task di tabel build telah sukses di kerjakan.
+
+          Update di tabel tasks: status = 1  where {id} = id task yg baru di eksekusi // untuk membuat nya menjadi ready di unduh.
+
+}
+
+============    CASE SECTION 2      ====================
+
+// mulai Scheduling everyMinute
+
+------------------ Tasks Table -------------------------
+
+id | user_id | nama_os | nama_file_iso | .... | status
+
+1     1       dikyos      tealinux.d-os            0
+2     2       setyos      tealinux.s-os            0
+3     1       irfanos     tealinux.i-os            0
+4     3       dinos       tealinux.din-os          0
+
+--------------- Builds Table -----------------------------
+
+id  | task_id | sudah_jadi | status_server
+
+1     1             0             0
+
+/\/\/\/\ Tambah satu row karena kosong / sudah_jadi = 1 di row terakhir  /\/\/\/\
+
+============    CASE SECTION 3      ====================
+
+------------------ Tasks Table -------------------------
+
+id | user_id | nama_os | nama_file_iso | .... | status
+
+1     1       dikyos      tealinux.d-os            0
+2     2       setyos      tealinux.s-os            0
+3     1       irfanos     tealinux.i-os            0
+4     3       dinos       tealinux.din-os          0
+
+--------------- Builds Table -----------------------------
+
+id  | task_id | sudah_jadi | status_server
+
+1     1             0             1
+
+/\/\/\/\/\ status_server = 1 untuk mencegah exec tiap 1 menit, lihat kodisi di IF  /\/\/\/\/\
+
+============    CASE SECTION 4      ====================
+
+// everyMinute will do nothing becouse codition on IF not covered
+// until bash file update the value after done building
+
+// seumpannya ini udah jadi
+
+------------------ Tasks Table -------------------------
+
+id | user_id | nama_os | nama_file_iso | .... | status
+
+1     1       dikyos      tealinux.d-os            1   <---- akan terupdate
+2     2       setyos      tealinux.s-os            0
+3     1       irfanos     tealinux.i-os            0
+4     3       dinos       tealinux.din-os          0
+
+--------------- Builds Table -----------------------------
+
+id  | task_id | sudah_jadi | status_server
+
+1     1             1             0
+
+                    /\            /\
+                    ||            ||
+                    ||            ||
+                    ||            ======== jadi nol
+                    ||
+                    ====== berubah jadi satu
+
+
+
+
+
+============    CASE SECTION 5      ====================
+
+// repeat
+
+------------------ Tasks Table -------------------------
+
+id | user_id | nama_os | nama_file_iso | .... | status
+
+1     1       dikyos      tealinux.d-os            1
+2     2       setyos      tealinux.s-os            0
+3     1       irfanos     tealinux.i-os            0
+4     3       dinos       tealinux.din-os          0
+
+--------------- Builds Table -----------------------------
+
+id  | task_id | sudah_jadi | status_server
+
+1     1             1             0
+2     2             0             0
+
+// yeah repeat

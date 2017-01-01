@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
+	<title>Navigation Drawers - Material</title>
+
+	<!-- css -->
+	<link href="../css/base.css" rel="stylesheet">
+
+	<!-- css for doc -->
+	<!-- <link href="../css/project.min.css" rel="stylesheet"> -->
+
+	<!-- favicon -->
+	<!-- ... -->
+</head>
+<body class="page-brand">
+	<nav class="menu menu-left nav-drawer nav-drawer-md" id="doc_menu">
+		<div class="menu-scroll">
+			<div class="menu-content">
+				<a class="menu-logo" href="index.html"><b>TeaLinux</b> Studio</a>
+				<ul class="nav">
+					<li>
+						<a class="waves-attach" data-toggle="collapse" href="#doc_menu_components">Components</a>
+						<ul class="menu-collapse collapse in" id="doc_menu_components">
+							<li>
+								<a class="waves-attach" href="ui-button.html">Buttons</a>
+							</li>
+							<li>
+								<a class="waves-attach" href="ui-button-fab.html">Buttons <small>(Floating Action Button)</small></a>
+							</li>
+
+
+
+						</ul>
+					</li>
+					<li>
+						<a class="collapsed waves-attach" data-toggle="collapse" href="#doc_menu_extras">Extras</a>
+						<ul class="menu-collapse collapse" id="doc_menu_extras">
+							<li>
+								<a class="waves-attach" href="ui-avatar.html">Avatars</a>
+							</li>
+							<li>
+								<a class="waves-attach" href="ui-icon.html">Icons</a>
+							</li>
+							<li>
+								<a class="waves-attach" href="ui-label.html">Labels</a>
+							</li>
+							<li>
+								<a class="waves-attach" href="ui-nav.html">Navs</a>
+							</li>
+							<li>
+								<a class="waves-attach" href="ui-tile.html">Tiles</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="collapsed waves-attach" data-toggle="collapse" href="#doc_menu_javascript">Javascript</a>
+						<ul class="menu-collapse collapse" id="doc_menu_javascript">
+							<li>
+								<a class="waves-attach" href="ui-affix.html">Affix</a>
+							</li>
+							<li>
+								<a class="waves-attach" href="ui-collapse.html">Collapse</a>
+							</li>
+							<li>
+								<a class="waves-attach" href="ui-dropdown-menu.html">Dropdown</a>
+							</li>
+							<li>
+								<a class="waves-attach" href="ui-modal.html">Modals</a>
+							</li>
+							<li>
+								<a class="waves-attach" href="ui-tab.html">Togglable Tabs</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<header class="header header-transparent header-waterfall">
+		<ul class="nav nav-list pull-left hidden-md hidden-lg">
+			<li>
+				<a data-toggle="menu" href="#doc_menu">
+					<span class="icon icon-lg">menu</span>
+				</a>
+			</li>
+		</ul>
+		<a class="header-logo header-affix-hide margin-left-no margin-right-no hidden-md hidden-lg" data-offset-top="213" data-spy="affix" href="index.html">TeaLinux Studio</a>
+		<span class="header-logo header-affix margin-left-no margin-right-no" data-offset-top="213" data-spy="affix">Mulai Racik OS-mu</span>
+		<ul class="nav nav-list pull-right">
+			<li>
+				<a data-toggle="menu" href="#doc_menu_profile">
+					<span class="access-hide"> John Smith</span>
+					<span class="avatar avatar-sm"><img alt="alt text for John Smith avatar" src="../images/users/avatar-001.jpg"></span>
+				</a>
+			</li>
+		</ul>
+	</header>
+	<nav aria-hidden="true" class="menu menu-right" id="doc_menu_profile" tabindex="-1">
+		<div class="menu-scroll">
+			<div class="menu-top">
+				<div class="menu-top-img">
+					<img alt="John Smith" src="../images/samples/landscape.jpg">
+				</div>
+				<div class="menu-top-info">
+					<a class="menu-top-user" href="javascript:void(0)"><span class="avatar pull-left"><img alt="alt text for John Smith avatar" src="../images/users/avatar-001.jpg"></span>John Smith</a>
+				</div>
+
+			</div>
+			<div class="menu-content">
+				<ul class="nav">
+					<li>
+						<a class="waves-attach" href="javascript:void(0)"> Profile Settings</a>
+
+					</li>
+					<li>
+						<a class="waves-attach" href="javascript:void(0)">Upload Photo</a>
+					</li>
+					<li>
+						<a class="waves-attach" href="page-login.html">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="content">
+		<div class="content-heading">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-lg-offset-3 col-md-10 col-md-offset-1">
+						<h1 class="heading">Mulai Racik OS-mu</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3 col-md-10 col-md-offset-1">
+					<section class="content-inner margin-top-no">
+
+						<div class="form-group form-group-label">
+								<label class="floating-label" for="..."> Beri Nama OS kamu </label>
+								<input class="form-control" id="..." type="text">
+						</div>
+						<div class="card">
+							<div class="card-main">
+								<nav class="tab-nav margin-top-no">
+									<ul class="nav nav-justified nav-tabs">
+
+
+								    <li class="active"><a href="#tab1" data-toggle="tab">Arsitektur</a></li>
+								    <li><a href="#tab2" data-toggle="tab">Tampilan</a></li>
+										<li><a href="#tab3" data-toggle="tab">Aplikasi</a></li>
+									</ul>
+								</nav>
+								<div class="card-inner">
+									<div class="tab-content">
+									    <div class="tab-pane active" id="tab1">
+												<div class="form-group">
+													<div class="radiobtn radiobtn-adv">
+														<label for="input_radio_example_1">
+															<input class="access-hide" id="input_radio_example_1" name="input_radio_example" type="radio">32 Bit
+															<span class="radiobtn-circle"></span><span class="radiobtn-circle-check"></span>
+														</label>
+													</div>
+													<div class="radiobtn radiobtn-adv">
+														<label for="input_radio_example_2">
+															<input checked class="access-hide" id="input_radio_example_2" name="input_radio_example" type="radio">62 Bit
+															<span class="radiobtn-circle"></span><span class="radiobtn-circle-check"></span>
+														</label>
+													</div>
+												</div>
+
+									        <a class="btn btn-flat btn-green waves-attach btnNext">Selanjutnya</a>
+									    </div>
+									    <div class="tab-pane fade" id="tab2">
+
+									        <a class="btn btn-flat btn-green waves-attach btnNext">Selanjutnya</a>
+									        <a class="btn btn-flat waves-attach btnPrevious">Sebelumnya</a>
+									    </div>
+									    <div class="tab-pane fade" id="tab3">
+												
+									        <a class="btn btn-flat waves-attach btnPrevious">Sebelumnya</a>
+									    </div>
+									</div>
+							</div>
+
+					</section>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="container">
+			<p><b>TeaLinux</b> Studio</p>
+		</div>
+	</footer>
+	<div class="fbtn-container">
+		<div class="fbtn-inner">
+			<a class="fbtn fbtn-lg fbtn-brand-accent waves-attach waves-circle waves-light" data-toggle="dropdown"><span class="fbtn-text">Links</span><span class="fbtn-ori icon">apps</span><span class="fbtn-sub icon">close</span></a>
+			<div class="fbtn-dropdown">
+				<a class="fbtn waves-attach waves-circle" href="https://github.com/Daemonite/material" target="_blank"><span class="fbtn-text">Fork me on GitHub</span><span class="icon">code</span></a>
+				<a class="fbtn fbtn-brand waves-attach waves-circle waves-light" href="https://twitter.com/daemonites" target="_blank"><span class="fbtn-text">Follow Daemon on Twitter</span><span class="icon">share</span></a>
+				<a class="fbtn fbtn-green waves-attach waves-circle" href="http://www.daemon.com.au/" target="_blank"><span class="fbtn-text">Visit Daemon Website</span><span class="icon">link</span></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="../js/base.min.js"></script>
+	<script type="text/javascript">
+	$('.btnNext').click(function(){
+		$('.nav-tabs > .active').next('li').find('a').trigger('click');
+		});
+
+		$('.btnPrevious').click(function(){
+		$('.nav-tabs > .active').prev('li').find('a').trigger('click');
+		});
+	</script>
+
+	<!-- js for doc -->
+	<!-- <script src="../js/project.min.js"></script> -->
+</body>
+</html>
